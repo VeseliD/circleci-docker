@@ -7,8 +7,7 @@ jobs:
      # start proprietary DB using private Docker image
      # with credentials stored in the UI
      - run: |
-         docker login --username veselidrago --password Test1234?
-         # docker run -d --name db veselidrago/proprietary-db:1.2.3
+     echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
 
      # build the application image
      - run: docker build -t veselidrago/nginx:$CIRCLE_BRANCH .
